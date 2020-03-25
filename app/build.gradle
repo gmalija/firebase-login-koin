@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    defaultConfig {
+        applicationId "com.gmalija.access"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+}
+
+dependencies {
+
+    // Outer project
+    implementation project(':app-core')
+    implementation project(':app-ui')
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt "com.android.databinding:compiler:$gradle_version"
+    implementation "androidx.core:core-ktx:$ktx_core"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Ui
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+
+    // Firebase Crashlitics
+    implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
+    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlitics_version"
+
+    // Google auth
+    implementation "com.google.android.gms:play-services-auth:$play_services_version"
+
+    // Externals
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    // Test
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_android_version"
+}
+apply plugin: 'com.google.gms.google-services'

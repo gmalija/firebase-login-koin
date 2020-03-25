@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#BB86FC</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC6</color>
+
+
+    <color name="colorMainText">#FFFFFF</color>
+    <color name="colorAltText">#CCCCCC</color>
+    <color name="colorTextLink">#03DAC6</color>
+
+    <color name="colorBackground">#000000</color>
+    <color name="colorError">#CF6679</color>
+
+    <color name="colorBackgroundToolbar">#2E2E2E</color>
+    <color name="colorStatusBar">#000000</color>
+    <color name="colorIcon">#FFFFFF</color>
+</resources>

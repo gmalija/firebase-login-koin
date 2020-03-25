@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MobileAccess</string>
+
+    <string name="login">Login</string>
+    <string name="register_with_email">Register with email</string>
+    <string name="register_with_google">Register with google</string>
+    <string name="intro_password">Intro password</string>
+    <string name="intro_email">Intro email</string>
+</resources>
